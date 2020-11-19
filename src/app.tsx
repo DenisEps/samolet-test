@@ -13,7 +13,7 @@ export default function App() {
   return (
     <Layout>
       <pre>
-        { JSON.stringify(data, null, 2) }
+        {JSON.stringify(data, null, 2)}
       </pre>
     </Layout>
   );
