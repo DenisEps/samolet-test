@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useCallback } from "react";
+import { useHistory } from "react-router-dom";
 
 import { Card } from "antd";
 
@@ -7,14 +8,20 @@ import { LibrariesSpan } from "./library-card.styles";
 interface LibraryCardProps {
   region: string;
   numOfLibs: number;
+  id: number;
 }
 
 export const LibraryCard: React.FC<LibraryCardProps> = ({
   region,
   numOfLibs,
+  id,
 }) => {
+  const history = useHistory();
+
+  const handleOnClick: () => void = () => history.push(`/libraries/${id}`);
+
   return (
-    <Card title={region} hoverable>
+    <Card onClick={handleOnClick} title={region} hoverable>
       Кол-во библиотек: <LibrariesSpan>{numOfLibs}</LibrariesSpan>
     </Card>
   );

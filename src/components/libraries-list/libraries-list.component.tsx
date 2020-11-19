@@ -27,6 +27,7 @@ export const ListComponent: React.FC<ListComponentProps> = ({}) => {
           <LibraryCard
             region={library.territory}
             numOfLibs={library.libraries}
+            id={library.order}
           />
         </List.Item>
       )}
