@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { List } from "antd";
 
-import LibrariesContext from "../../contexts/libraries/libraries.context";
+import { LibrariesContext } from "../../providers/libraries/libraries.provider";
 
 import { LibraryCard } from "../library-card/library-card.component";
 
@@ -16,9 +16,9 @@ export const ListComponent: React.FC<ListComponentProps> = ({}) => {
         gutter: 16,
         xs: 1,
         sm: 2,
-        md: 4,
+        md: 3,
         lg: 4,
-        xl: 6,
+        xl: 4,
         xxl: 3,
       }}
       dataSource={data}

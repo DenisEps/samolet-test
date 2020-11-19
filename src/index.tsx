@@ -6,14 +6,17 @@ import ruRU from "antd/lib/locale-provider/ru_RU";
 import App from "./app";
 import * as serviceWorker from "./serviceWorker";
 import "antd/dist/antd.css";
+import { LibrariesProvider } from "./providers/libraries/libraries.provider";
 
 ReactDOM.render(
+  <LibrariesProvider>
     <ConfigProvider locale={ruRU}>
-        <BrowserRouter>
-            <App />
-        </BrowserRouter>
-    </ConfigProvider>,
-    document.getElementById("root")
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </ConfigProvider>
+  </LibrariesProvider>,
+  document.getElementById("root")
 );
 
 // If you want your app to work offline and load faster, you can change
