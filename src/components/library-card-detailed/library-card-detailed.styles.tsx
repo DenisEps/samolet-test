@@ -3,10 +3,10 @@ import { Colors } from "../../assets/colors";
 import { Card } from "antd";
 
 export const LibraryCardDetailedContainer = styled(Card)`
-  width: 500px;
+  width: 700px;
   margin: 0 auto;
 
-  @media screen and (max-width: 615px) {
+  @media screen and (max-width: 850px) {
     width: 100%;
   }
 `;
