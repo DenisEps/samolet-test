@@ -3,8 +3,9 @@ import { Layout } from "antd";
 import "./app.css";
 import { getData } from "./api";
 
-import { ContentContainer } from "./app.styles";
+import LibrariesContext from "./contexts/libraries/libraries.context";
 
+import { ContentContainer } from "./app.styles";
 import { LibrariesData } from "./models/data.interface";
 
 import { HeaderComponent } from "./components/header/header.component";
@@ -18,13 +19,15 @@ const App: React.FC = () => {
   }, []);
 
   return (
-    <Layout>
-      <HeaderComponent />
-      <ContentContainer>
-        <HomePage data={data} />
-      </ContentContainer>
-      {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
-    </Layout>
+    <LibrariesContext.Provider value={data}>
+      <Layout>
+        <HeaderComponent />
+        <ContentContainer>
+          <HomePage />
+        </ContentContainer>
+        {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
+      </Layout>
+    </LibrariesContext.Provider>
   );
 };
 

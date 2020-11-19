@@ -1,15 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import { List } from "antd";
 
-import { LibrariesData } from "../../models/data.interface";
+import LibrariesContext from "../../contexts/libraries/libraries.context";
 
 import { LibraryCard } from "../library-card/library-card.component";
 
-interface ListComponentProps {
-  data: LibrariesData[];
-}
+interface ListComponentProps {}
 
-export const ListComponent: React.FC<ListComponentProps> = ({ data }) => {
+export const ListComponent: React.FC<ListComponentProps> = ({}) => {
+  const data = useContext(LibrariesContext);
+
   return (
     <List
       grid={{
