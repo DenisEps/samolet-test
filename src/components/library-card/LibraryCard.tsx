@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 
 import { Card } from "antd";
 
-import { LibrariesSpan } from "./library-card.styles";
+import { LibrariesSpan } from "./LibraryCard.styles";
 
 interface LibraryCardProps {
   region: string;

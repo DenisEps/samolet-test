@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import { Colors } from "../../assets/colors";
+import { Colors } from "assets/colors";
+import { HomeFilled, FilterFilled } from "@ant-design/icons";
 
 import { Layout, Input } from "antd";
-import { HomeFilled } from "@ant-design/icons";
 
 const { Header } = Layout;
 const { Search } = Input;
@@ -12,6 +12,7 @@ export const HeaderContainer = styled(Header)`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  user-select: none;
 `;
 
 export const HomeIcon = styled(HomeFilled)`
@@ -27,4 +28,21 @@ export const HomeIcon = styled(HomeFilled)`
 export const SearchComp = styled(Search)`
   width: 300px;
   border-color: unset;
+  margin: 0 1rem;
+`;
+
+export const SortFilterContainer = styled.div`
+  .rotate {
+    transform: rotate(180deg);
+  }
+`;
+
+type SortIconType = {
+  sort?: null | "desc" | "asc";
+};
+
+export const SortIcon = styled(FilterFilled)<SortIconType>`
+  font-size: 1.8rem;
+
+  color: ${(props) => (props.sort === null ? Colors.color2b : "lightgreen")};
 `;

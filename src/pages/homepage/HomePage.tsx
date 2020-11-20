@@ -1,6 +1,6 @@
 import React from "react";
 
-import { ListComponent } from "../../components/libraries-list/libraries-list.component";
+import { ListComponent } from "components/libraries-list/LibrariesList";
 
 interface HomePageProps {
 }

@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Switch, Route } from "react-router-dom";
 import { Layout } from "antd";
-import "./app.css";
+import "app.css";
 
-import { ContentContainer } from "./app.styles";
+import { ContentContainer } from "app.styles";
 
-import { HeaderComponent } from "./components/header/header.component";
-import { HomePage } from "./pages/homepage/homepage.component";
-import {LibraryDetails} from './pages/library-details/library-details.component';
+import { HeaderComponent } from "components/header/Header";
+import { HomePage } from "pages/homepage/HomePage";
+import {LibraryDetails} from 'pages/library-details/LibraryDetails';
 
 const App: React.FC = () => {
 

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import {LibraryCardDetailed} from '../../components/library-card-detailed/library-card-detailed.component'
+import {LibraryCardDetailed} from 'components/library-card-detailed/LibraryCardDetailed'
 
 interface LibraryDetailsProps {
 }

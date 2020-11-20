@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Colors } from "../../assets/colors";
+import { Colors } from "assets/colors";
 import { Card } from "antd";
 
 export const LibraryCardDetailedContainer = styled(Card)`

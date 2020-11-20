@@ -1,38 +1,23 @@
 import React, { createContext, useState, useEffect } from "react";
 
 import { LibrariesData } from "models/data.interface";
-import { getData } from "../../api";
+import { getData } from "api";
 
-interface LibrariesContextInterface {
-  modifiedData: LibrariesData[];
-  filterLibraries: any;
-}
+type LibrariesContextValue = LibrariesData[] | null;
 
-export const LibrariesContext = createContext<LibrariesContextInterface>({
-  modifiedData: [],
-  filterLibraries: () => {},
-});
+export const LibrariesContext = createContext<LibrariesContextValue>(null);
 
 export const LibrariesProvider: React.FC = ({ children }) => {
-  const [data, setData] = useState<LibrariesData[]>([]);
-  const [modifiedData, setModifiedData] = useState<LibrariesData[]>(data);
+  const [data, setData] = useState<LibrariesContextValue>(null);
 
   useEffect(() => {
     getData().then((res) => {
       setData(res);
-      setModifiedData(res);
     });
   }, []);
 
-  const filterLibraries = (str: string) => {
-    const newData = data?.filter((library) =>
-      library.territory.toString().toLowerCase().includes(str.toLowerCase())
-    );
-    setModifiedData(newData);
-  };
-
   return (
-    <LibrariesContext.Provider value={{ modifiedData, filterLibraries }}>
+    <LibrariesContext.Provider value={data}>
       {children}
     </LibrariesContext.Provider>
   );
