@@ -14,11 +14,13 @@ interface LibraryCardDetailedProps {}
 
 export const LibraryCardDetailed: React.FC<LibraryCardDetailedProps> = ({}) => {
   const { id } = useParams<{ id: string | undefined }>();
-  const data = useContext(LibrariesContext);
+  const { modifiedData } = useContext(LibrariesContext);
 
   let libraryInfo;
-  if (data) {
-    libraryInfo = data.filter((library) => library.order === Number(id))[0];
+  if (modifiedData) {
+    libraryInfo = modifiedData.filter(
+      (library) => library.order === Number(id)
+    )[0];
   }
 
   return (

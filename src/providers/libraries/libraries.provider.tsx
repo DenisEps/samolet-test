@@ -3,19 +3,37 @@ import React, { createContext, useState, useEffect } from "react";
 import { LibrariesData } from "models/data.interface";
 import { getData } from "../../api";
 
-export const LibrariesContext = createContext<LibrariesData[] | undefined>(undefined);
+interface LibrariesContextInterface {
+  modifiedData: LibrariesData[];
+  filterLibraries: any;
+}
 
-export const LibrariesProvider: React.FC = ({
-  children,
-}) => {
-  const [data, setData] = useState<LibrariesData[] | undefined>(undefined);
+export const LibrariesContext = createContext<LibrariesContextInterface>({
+  modifiedData: [],
+  filterLibraries: () => {},
+});
 
+export const LibrariesProvider: React.FC = ({ children }) => {
+  const [data, setData] = useState<LibrariesData[]>([]);
+  const [modifiedData, setModifiedData] = useState<LibrariesData[]>(data);
 
   useEffect(() => {
-    getData().then(setData);
-    console.log('fetching data');
-
+    getData().then((res) => {
+      setData(res);
+      setModifiedData(res);
+    });
   }, []);
 
-return (<LibrariesContext.Provider value={data}>{children}</LibrariesContext.Provider>);
+  const filterLibraries = (str: string) => {
+    const newData = data?.filter((library) =>
+      library.territory.toString().toLowerCase().includes(str.toLowerCase())
+    );
+    setModifiedData(newData);
+  };
+
+  return (
+    <LibrariesContext.Provider value={{ modifiedData, filterLibraries }}>
+      {children}
+    </LibrariesContext.Provider>
+  );
 };
