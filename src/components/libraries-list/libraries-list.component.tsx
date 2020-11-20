@@ -8,7 +8,7 @@ import { LibraryCard } from "../library-card/library-card.component";
 interface ListComponentProps {}
 
 export const ListComponent: React.FC<ListComponentProps> = ({}) => {
-  const data = useContext(LibrariesContext);
+  const { modifiedData } = useContext(LibrariesContext);
 
   return (
     <List
@@ -21,7 +21,7 @@ export const ListComponent: React.FC<ListComponentProps> = ({}) => {
         xl: 4,
         xxl: 3,
       }}
-      dataSource={data}
+      dataSource={modifiedData}
       renderItem={(library) => (
         <List.Item>
           <LibraryCard
