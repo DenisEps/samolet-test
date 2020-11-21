@@ -31,11 +31,7 @@ export const SearchComp = styled(Search)`
   margin: 0 1rem;
 `;
 
-export const SortFilterContainer = styled.div`
-  .rotate {
-    transform: rotate(180deg);
-  }
-`;
+export const SortFilterContainer = styled.div``;
 
 type SortIconType = {
   sort?: null | "desc" | "asc";
@@ -43,6 +39,11 @@ type SortIconType = {
 
 export const SortIcon = styled(FilterFilled)<SortIconType>`
   font-size: 1.8rem;
-
   color: ${(props) => (props.sort === null ? Colors.color2b : "lightgreen")};
+
+  transition: all 0.3s;
+
+  &.rotate {
+    transform: rotate(180deg);
+  }
 `;
